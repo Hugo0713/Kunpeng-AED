@@ -1,0 +1,20 @@
+[Unit]
+Description=Kunpeng-AED Acoustic Event Detection Service
+After=network.target sound.target
+
+[Service]
+Type=simple
+User=kunpeng
+WorkingDirectory=/home/kunpeng/kunpeng-aed
+Environment="PATH=/home/kunpeng/kunpeng-aed/venv/bin:/usr/local/bin:/usr/bin"
+Environment="MODEL_PATH=/home/kunpeng/kunpeng-aed/models/yamnet_int8.tflite"
+Environment="THREADS=4"
+Environment="PORT=8080"
+ExecStart=/home/kunpeng/kunpeng-aed/venv/bin/python -m app.server --model ${MODEL_PATH} --threads ${THREADS} --port ${PORT}
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
