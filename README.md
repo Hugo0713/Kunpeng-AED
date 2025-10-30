@@ -50,7 +50,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-org/kunpeng-aed.git
+git clone https://github.com/Hugo0713/Kunpeng-AED.git
 cd kunpeng-aed
 
 # 运行环境配置脚本
@@ -62,12 +62,28 @@ source venv/bin/activate
 
 ### 3. 下载模型
 
-从 [TensorFlow Hub](https://tfhub.dev/google/yamnet/1) 下载 YAMNet INT8 模型:
+从 [Kaggle Models](https://www.kaggle.com/models/google/yamnet/tensorFlow2/yamnet/1) 下载 YAMNet 模型并转换为 INT8 TFLite:
 
 ```bash
 mkdir -p models
-# 下载 yamnet_int8.tflite 到 models/ 目录
-wget -O models/yamnet_int8.tflite <model-url>
+
+# 方法1: 直接从 Kaggle 下载 (需要 Kaggle API)
+pip install kaggle
+kaggle models instances versions download google/yamnet/tensorFlow2/yamnet/1
+
+# 方法2: 手动下载
+# 访问 https://www.kaggle.com/models/google/yamnet/tensorFlow2/yamnet/1
+# 下载 SavedModel 后使用脚本转换为 TFLite INT8
+
+# 或使用预转换的 INT8 模型 (如果有)
+# wget -O models/yamnet_int8.tflite <your-converted-model-url>
+```
+
+**模型转换脚本** (可选):
+```bash
+python scripts/convert_to_int8.py \
+    --input yamnet_saved_model/ \
+    --output models/yamnet_int8.tflite
 ```
 
 ### 4. 启动系统
@@ -251,7 +267,7 @@ MIT License - 详见 [LICENSE](LICENSE)
 
 ## 📧 联系方式
 
-- 项目主页: https://github.com/your-org/kunpeng-aed
+- 项目主页: https://github.com/Hugo0713/Kunpeng-AED
 - 技术支持: support@kunpeng-aed.org
 
 ---
