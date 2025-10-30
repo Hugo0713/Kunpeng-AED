@@ -50,7 +50,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-org/kunpeng-aed.git
+git clone https://github.com/Hugo0713/Kunpeng-AED.git
 cd kunpeng-aed
 
 # 运行环境配置脚本
@@ -251,7 +251,7 @@ MIT License - 详见 [LICENSE](LICENSE)
 
 ## 📧 联系方式
 
-- 项目主页: https://github.com/your-org/kunpeng-aed
+- 项目主页: https://github.com/Hugo0713/Kunpeng-AED
 - 技术支持: support@kunpeng-aed.org
 
 ---
